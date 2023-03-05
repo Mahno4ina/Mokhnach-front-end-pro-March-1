@@ -1,2 +1,4 @@
 let name= prompt('What is your name?','');
-alert('Hello '+name+' !');
+const `Hello ${name}!`
+
+
