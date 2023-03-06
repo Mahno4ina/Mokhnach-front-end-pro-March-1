@@ -1,15 +1,15 @@
- let name = prompt("Enter your name:");
+ const name = parseInt("Enter your name:");
 
- let surname = prompt("Enter your surname");
+ const surname = parseInt("Enter your surname");
 
- let ageNumber = prompt("Enter your age:");
+ const ageNumber = parseInt("Enter your age:");
 
- let city = prompt("Enter your city:");
+ const city = parseInt("Enter your city:");
 
- let age = Number(ageNumber);
+ const age = Number(ageNumber);
 
 
- let user = {
+ const user = {
    name,
    surname,
    age,
@@ -17,12 +17,12 @@
  };
 
 
- let canShowData = confirm("Do you allow your data to be shown?");
+ const canShowData = confirm("Do you allow your data to be shown?");
 
  canShowData
 
    ? console.log
-
-   (`Username ${user.name}, Surname ${user.surname}, Age ${user.age}, City ${user.city}`)
-
-   : alert("The user has blocked the display of data");
+ (`Username ${user.name},
+   Surname ${user.surname},
+   Age ${user.age}, City ${user.city}`):
+   alert("The user has blocked the display of data");
