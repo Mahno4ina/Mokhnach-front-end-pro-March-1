@@ -1,5 +1,5 @@
-   const num1 = prompt("Введите первое число");
-const num2 = prompt("Введите второе число");
+const num1 = prompt("Enter first number:");
+const num2 = prompt("Enter second number:");
 
 if (!num1) {
   num1 = 0;
@@ -9,28 +9,26 @@ if (!num2) {
   num2 = 22;
 }
 
-const bothTrue = num1 && num2;
-let resultVar;
-
-if (bothTrue) {
-  resultVar = 80;
+let result;
+if (num1 && num2) {
+  result = 80;
 } else {
-  resultVar = 40;
+  result = 40;
 }
 
-const emptyObject = {};
+const obj = {};
 
 if (num1 >= 90) {
-  emptyObject.size = "big";
+  obj.size = "big";
 } else if (num1 <= 40) {
-  emptyObject.size = "small";
+  obj.size = "small";
 } else {
-  emptyObject.size = "medium";
+  obj.size = "medium";
 }
 
 let size;
 
-switch (emptyObject.size) {
+switch (empty.size) {
   case "big":
     size = 1000;
     break;
@@ -40,18 +38,13 @@ switch (emptyObject.size) {
   case "small":
     size = 10;
     break;
-  default:
-    size = 0;
 }
 
-const result = num1 * num2 * size;
-
-if (result % 2 !== 0) {
-  console.log("Результат нечетный");
-} else if (num2 > 50) {
-  alert("Второе число больше 50");
-}
-console.log("The result of the division is odd!");
-} else if (num2 > 50) {
-alert("The second number you entered - ${numSecond}");
+const resultAll = num1 * num2 * num3;
+if (resultAll % 2 !== 0) {
+  console.log("The result is odd");
+} else {
+  if (num2 > 50) {
+    alert(num2);
+  }
 }
