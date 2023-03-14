@@ -1,65 +1,65 @@
-//1) Запросить у пользователя 2 числа
-const num1 = prompt("Enter first number:", 0);
-const num2 = prompt("Enter second number:", 22);
-//Если пользователь не ввел первое число оно будет равнятся 0
-if (!num1) {
-  num1 = 0;
-}
-//Если пользователь не ввел второе число оно будет равнятся 22
-if (!num2) {
-  num2 = 22;
-}
-// Создать еще одну переменную
-let result;
-//Если обе предыдущие переменные имеют значение по Булеву true, тогда эта переменнаяБудет равняться 80
-//равняется false то эта переменная будет равна 40
-if (num1 && num2) {
-  result = 80;
-} else {
-  result = 40;
-}
-//Создаем пустой обьект
-const obj = {};
-//Проверяем если Первая переменная больше или равно 90 то добавляем в обьект поле size = 'big'
-//Проверяем если Первая переменная меньше или равно 40 то добавляем в обьект поле size = 'small'
-//Иначе добавляем в обьект поле size = 'medium'
-if (num1 >= 90) {
-  obj.size = "big";
-} else if (num1 <= 40) {
-  obj.size = "small";
-} else {
-  obj.size = "medium";
-}
-//5)Дальше создаем еще одну переменную
-let size;
-/*6)С помощью конструкции switch case пишем такую логику
-
-Если поле size в обьекте 'big' присваиваем этой переменной 1000
-
-Если поле size в обьекте 'medium' присваиваем этой переменной 100
-
-Если поле size в обьекте 'small' присваиваем этой переменной 10*/
-switch (empty.size) {
-  case "big":
-    size = 1000;
-    break;
-  case "medium":
-    size = 100;
-    break;
-  case "small":
-    size = 10;
-    break;
-}
-/*В конце программы перемножаем все числа, записываем результат в переменную и проверяем если остаток от деление на 2 не равен нулю,
-
-Выводим в консоль какое то сообщение, придумайте сами xD
-
-Иначе проверяем что второе число которое ввел пользователь больше 50 и тогда показываем alert() - это число*/
-const resultAll = num1 * num2 * num3;
-if (resultAll % 2 !== 0) {
-  console.log("The result is odd");
-} else {
-  if (num2 > 50) {
-    alert(num2);
+/*Вивести в консоль в один рядок через кому числа від 10 до 20.*/
+for (let i = 10; i <= 20; i++) {
+  if (i < 20) {
+    console.log(i + ",");
+  } else {
+    console.log(i);
   }
+}
+/*Вивести в консоль в один рядок через кому квадрати чисел від 10 до 20.*/
+for (let i = 10; i <= 20; i++) {
+  let square = i * i;
+  if (i < 20) {
+    console.log(square + ",");
+  } else {
+    console.log(square);
+  }
+}
+/*Знайти добуток усіх цілих чисел від 15 до 35.*/
+let wholeNumbers = 1;
+for (let i = 15; i <= 35; i++) {
+  wholeNumbers *= i;
+}
+console.log(wholeNumbers);
+/*Знайти середнє арифметичне всіх цілих чисел від 1 до 500.*/
+let sum = 0;
+let count = 0;
+for (let i = 1; i <= 500; i++) {
+  sum += i;
+  count++;
+}
+const average = sum / count;
+console.log(average);
+/*Вивести суму лише парних чисел в діапазоні від 30 до 80.*/
+let sum2 = 0;
+
+for (let i = 30; i <= 80; i++) {
+  if (i % 2 === 0) {
+    sum2 += i;
+  }
+}
+console.log(sum2);
+/*Вивести всі числа в діапазоні від 100 до 200 кратні 3.*/
+for (let i = 100; i <= 200; i++) {
+  if (i % 3 === 0) {
+    console.log(i);
+  }
+}
+/*Дане ціле число. З'ясувати, чи є воно простим (простим називається число, більше 1, які не мають інших дільників крім 1 і себе).*/
+const number = prompt("Write a number:");
+let agent007 = true;
+if (number === "1") {
+  agent007 = false;
+} else if (number !== "2") {
+  for (let i = 2; i < number; i++) {
+    if (number % i === 0) {
+      agent007 = false;
+      break;
+    }
+  }
+}
+if (agent007) {
+  console.log("simple");
+} else {
+  console.log("not simple");
 }
