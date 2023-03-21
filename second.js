@@ -1,65 +1,63 @@
-/*Вивести в консоль в один рядок через кому числа від 10 до 20.*/
-for (let i = 10; i <= 20; i++) {
-  if (i < 20) {
-    console.log(i + ",");
-  } else {
-    console.log(i);
-  }
-}
-/*Вивести в консоль в один рядок через кому квадрати чисел від 10 до 20.*/
-for (let i = 10; i <= 20; i++) {
-  let square = i * i;
-  if (i < 20) {
-    console.log(square + ",");
-  } else {
-    console.log(square);
-  }
-}
-/*Знайти добуток усіх цілих чисел від 15 до 35.*/
-let wholeNumbers = 1;
-for (let i = 15; i <= 35; i++) {
-  wholeNumbers *= i;
-}
-console.log(wholeNumbers);
-/*Знайти середнє арифметичне всіх цілих чисел від 1 до 500.*/
-let sum = 0;
-let count = 0;
-for (let i = 1; i <= 500; i++) {
-  sum += i;
-  count++;
-}
-const average = sum / count;
-console.log(average);
-/*Вивести суму лише парних чисел в діапазоні від 30 до 80.*/
-let sum2 = 0;
+const arr = [
+  16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54,
+  76, -4, 12, -35, 4, 47,
+];
 
-for (let i = 30; i <= 80; i++) {
-  if (i % 2 === 0) {
-    sum2 += i;
-  }
-}
-console.log(sum2);
-/*Вивести всі числа в діапазоні від 100 до 200 кратні 3.*/
-for (let i = 100; i <= 200; i++) {
-  if (i % 3 === 0) {
-    console.log(i);
-  }
-}
-/*Дане ціле число. З'ясувати, чи є воно простим (простим називається число, більше 1, які не мають інших дільників крім 1 і себе).*/
-const number = prompt("Write a number:");
-let agent007 = true;
-if (number === "1") {
-  agent007 = false;
-} else if (number !== "2") {
-  for (let i = 2; i < number; i++) {
-    if (number % i === 0) {
-      agent007 = false;
-      break;
+let sumPos = 0;
+let countPos = 0;
+let min = arr[0];
+let minIndex = 0;
+let max = arr[0];
+let maxIndex = 0;
+let countNeg = 0;
+let countOdd = 0;
+let countEven = 0;
+let sumEven = 0;
+let sumOdd = 0;
+let productPos = 1;
+
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i] > 0) {
+    sumPos += arr[i];
+    productPos *= arr[i];
+    countPos++;
+    if (arr[i] % 2 === 0) {
+      countEven++;
+      sumEven += arr[i];
+    } else {
+      countOdd++;
+      sumOdd += arr[i];
     }
+  } else {
+    countNeg++;
+  }
+  if (arr[i] < min) {
+    min = arr[i];
+    minIndex = i;
+  }
+  if (arr[i] > max) {
+    max = arr[i];
+    maxIndex = i;
   }
 }
-if (agent007) {
-  console.log("simple");
-} else {
-  console.log("not simple");
+
+console.log(`Sum of positive elements: ${sumPos}`);
+console.log(`Count of positive elements: ${countPos}`);
+console.log(`Min element: ${min}`);
+console.log(`Index of min element: ${minIndex}`);
+console.log(`Max element: ${max}`);
+console.log(`Index of max element: ${maxIndex}`);
+console.log(`Count of negative elements: ${countNeg}`);
+console.log(`Count of odd positive elements: ${countOdd}`);
+console.log(`Count of even positive elements: ${countEven}`);
+console.log(`Sum of even positive elements: ${sumEven}`);
+console.log(`Sum of odd positive elements: ${sumOdd}`);
+console.log(`Product of positive elements: ${productPos}`);
+
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i] !== max) {
+    arr[i] = 0;
+  }
 }
+
+console.log(`Array after zeroing all elements except for the max: ${arr}`);
