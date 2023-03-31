@@ -1,40 +1,33 @@
-function removeElement(array, item) {
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] === item) {
-      array.splice(i, 1);
-      i--;
-    }
-  }
-  return array;
-}
-function generateKey(length, characters) {
-  let result = "";
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return result;
-}
-function removeChars(str, chars) {
-  let result = "";
-  for (let i = 0; i < str.length; i++) {
-    if (chars.indexOf(str[i]) === -1) {
-      result += str[i];
-    }
-  }
-  return result;
-}
-function sum(num) {
-  let total = num;
-  function add(nextNum) {
-    total += nextNum;
-    return add;
-  }
-  add.toString = function () {
-    return total;
+//--------------------------------------------------------------1
+const uniqueValues = (arr) => {
+  return [...new Set(arr)];
+};
+//------------------------------------------------------------------2
+const mostFrequentNumber = (arr) => {
+  let count = {};
+  let mostFrequent = arr[0];
+  arr.forEach((num) => {
+    if (!count[num]) count[num] = 0;
+    count[num]++;
+    if (count[num] > count[mostFrequent]) mostFrequent = num;
+  });
+  return mostFrequent;
+};
+//----------------------------------------------------3
+/*Что вернет выражение z(x) ?
+undefined
+Напишите ответ как вы понимаете
+у z нету возвращаемого значения
+*/
+//--------------------------------------------------4
+const debounce = (f, ms) => {
+  let timeout;
+  return function(...args) {
+    const later = () => {
+      timeout = null;
+      f.apply(this, args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, ms);
   };
-  return add;
-}
-
-console.log(sum(3));
-console.log(sum(5)(3));
-console.log(sum(20)(5)(3));
+};
