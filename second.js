@@ -1,7 +1,7 @@
-function solution(lst) {
+function solution(arr) {
   let count = {};
   //tipotak?
-  arr.forEach((num) => (count[num] = (count[num] || 0) + 1)); 
+  arr.forEach(num => count[num] = (count[num] || 0) + 1);
   let result = [];
   //tipotak??
   for (let num in count) {
