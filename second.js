@@ -19,7 +19,7 @@ console.log(solution([4, 8, 15, 16, 23, 42, 4, 15, 42, 42]));
 console.log(solution([2, 2, 44, 44]));
 //tipotak???
 function ezjQuery(selector) {
-  let htmlString = [document.querySelector(selector)];
+  let elements = [document.querySelector(selector)];
 
  function add(tag, content = '') {
     var el = document.createElement(tag);
