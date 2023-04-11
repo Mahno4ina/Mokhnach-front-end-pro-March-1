@@ -1,49 +1,49 @@
-function solution(lst) {
-  let count = {};
-  for (let i = 0; i < lst.length; i++) {
-    let num = lst[i];
-    if (num in count) {
-      count[num] += 1;
-    } else {
-      count[num] = 1;
+function solution(arr) {
+    let count = {};
+    //tipotak?
+    arr.forEach(num => count[num] = (count[num] || 0) + 1);
+    let result = [];
+    //tipotak??
+    for (let num in count) {
+      if (count[num] % 2 !== 0) {       
+        result.push(parseInt(num));  
+      }
     }
+    return result;
   }
-  let result = [];
-  for (let num in count) {
-    if (count[num] === 1) {
-      result.push(parseInt(num));
+  
+  console.log(solution([12, 23, 34, 12, 12, 23, 12, 45]));
+  console.log(solution([4, 4, 100, 5000, 4, 4, 4, 4, 4, 100, 100]));
+  console.log(solution([3, 3, 4, 6, 4, 5, 9, 9, 21, 9]));
+  console.log(solution([4, 8, 15, 16, 23, 42, 4, 15, 42, 42]));
+  console.log(solution([2, 2, 44, 44]));
+  //tipotak???
+  function ezjQuery(selector) {
+    let elements = [document.querySelector(selector)];
+  
+   function add(tag, content = '') {
+      var el = document.createElement(tag);
+      el.innerHTML = content;
+      elements[elements.length - 1].appendChild(el);
+      elements.push(el);
+      return this;
     }
+  
+    function render() {
+      var result = elements[0].outerHTML;
+      elements = [document.querySelector(selector)];
+      return result;
+    }
+  
+    return {
+      add: add,
+      render: render
+    };
   }
-  return result;
-}
-
-console.log(solution([12, 23, 34, 12, 12, 23, 12, 45]));
-console.log(solution([4, 4, 100, 5000, 4, 4, 4, 4, 4, 100, 100]));
-console.log(solution([3, 3, 4, 6, 4, 5, 9, 9, 21, 9]));
-console.log(solution([4, 8, 15, 16, 23, 42, 4, 15, 42, 42]));
-console.log(solution([2, 2, 44, 44]));
-
-function ezjQuery(tagName) {
-  let htmlString = `<${tagName}></${tagName}>`;
-
-  function add(newTagName, content = '') {
-    htmlString = htmlString.replace(`</${tagName}>`, `<${newTagName}>${content}</${newTagName}></${tagName}>`);
-    return this;
-  }
-
-  function render() {
-    return htmlString;
-  }
-
-  return {
-    add,
-    render
-  };
-}
-var helloList = ezjQuery('body')
-.add('div')
-.add('ul')
-.add('li', 'Hello')
-.render();
-
-console.log(helloList);
+  var helloList = ezjQuery('body')
+  .add('div')
+  .add('ul')
+  .add('li', 'Hello')
+  .render();
+  
+  console.log(helloList);
