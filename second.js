@@ -1,76 +1,47 @@
-function solution(str) {
-  const alphabet = "abcdefghijklmnopqrstuvwxyz";
-  const charCount = new Array(26).fill(false);
-
-  for (let i = 0; i < str.length; i++) {
-    const char = str.charAt(i).toLowerCase();
-    const index = alphabet.indexOf(char);
-    if (index !== -1) {
-      charCount[index] = true;
+function findCommonPrefix(strList) {
+  if (strList.length === 0) {
+    return "";
+  }
+  let prefix = strList[0];
+  for (let i = 1; i < strList.length; i++) {
+    while (strList[i].indexOf(prefix) !== 0) {
+      prefix = prefix.substring(0, prefix.length - 1);
+      if (prefix === "") {
+        return "";
+      }
     }
   }
-
-  return charCount.every((c) => c);
+  return prefix;
 }
 
-//________________________________________________________________________________________________________________________________________________
-
-function solution(sentence) {
-  const words = sentence.split(" ");
-
-  const averageLength =
-    words.reduce((acc, cur) => acc + cur.length, 0) / words.length;
-
-  const result = words.filter((word) => word.length > averageLength);
-
-  return result;
+//_________________________________________________________________________________
+function transformArray(arr, size = 3) {
+  const newArr = [];
+  let subArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    const subArrLen = arr[i].length;
+    if (subArrLen < size) {
+      subArr.push(...arr[i]);
+    } else if (subArrLen === size) {
+      if (subArr.length > 0) {
+        newArr.push(subArr);
+        subArr = [];
+      }
+      newArr.push(arr[i]);
+    } else {
+      let j = 0;
+      while (j < subArrLen) {
+        if (subArr.length === size) {
+          newArr.push(subArr);
+          subArr = [];
+        }
+        subArr.push(arr[i][j]);
+        j++;
+      }
+    }
+  }
+  if (subArr.length > 0) {
+    newArr.push(subArr);
+  }
+  return newArr;
 }
-
-console.log(solution("This is a sample string"));
-console.log(solution("Some another sample"));
-console.log(solution("Do, do, do, do... it!"));
-
-//________________________________________________________________________________________________________________________________________________
-
-function Database() {
-  this.users = [];
-  this.adminEmail = "admin@example.com";
-  this.password = "password123";
-}
-
-Database.prototype.addUser = function (user) {
-  this.users.push(user);
-};
-
-function User(name, email) {
-  this.name = name;
-  this.email = email;
-}
-
-function VerifiedUser(name, email) {
-  User.call(this, name, email);
-  this.verified = true;
-}
-
-VerifiedUser.prototype = Object.create(User.prototype);
-
-function Guest(name, email) {
-  User.call(this, name, email);
-}
-
-Guest.prototype = Object.create(User.prototype);
-
-const db = new Database();
-
-const admin = new VerifiedUser("Admin", db.adminEmail);
-const user1 = new VerifiedUser("John", "john@example.com");
-const user2 = new Guest("Kate", "kate@example.com");
-
-if (admin.password === db.password) {
-  db.addUser(admin);
-}
-
-db.addUser(user1);
-db.addUser(user2);
-
-console.log(db.users);
