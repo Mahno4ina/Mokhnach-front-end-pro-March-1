@@ -1,130 +1,147 @@
-function Student(firstName, lastName, birthYear, grades) {
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.birthYear = birthYear;
-  this.grades = grades;
-  this.attendance = new Array(25).fill(null);
-
-  this.getAge = function () {
-    const currentYear = new Date().getFullYear();
-    return currentYear - this.birthYear;
-  };
-
-  this.getAverageGrade = function () {
-    const sum = this.grades.reduce((acc, curr) => acc + curr, 0);
-    return sum / this.grades.length;
-  };
-
-  this.present = function () {
-    const attendanceIndex = this.attendance.indexOf(null);
-    if (attendanceIndex !== -1) {
-      this.attendance[attendanceIndex] = true;
+class Hamburgerr {
+    constructor(size, stuffing) {
+      this.size = size;
+      this.stuffing = stuffing;
+      this.toppings = [];
     }
-  };
-
-  this.absent = function () {
-    const attendanceIndex = this.attendance.indexOf(null);
-    if (attendanceIndex !== -1) {
-      this.attendance[attendanceIndex] = false;
+  
+    static size_small = { price: 50, calories: 20 };
+    static size_big = { price: 100, calories: 40 };
+    static stuf_cheese = { price: 10, calories: 20 };
+    static stuf_salad = { price: 20, calories: 5 };
+    static staf_potato = { price: 15, calories: 10 };
+    static top_mayo = { price: 20, calories: 5 };
+    static top_spice = { price: 15, calories: 0 };
+  
+    addTopping(topping) {
+      this.toppings.push(topping);
     }
-  };
-
-  this.summary = function () {
-    const averageGrade = this.getAverageGrade();
-    const attendanceCount = this.attendance.filter(Boolean).length;
-    const attendancePercentage = attendanceCount / this.attendance.length;
-
-    if (averageGrade > 90 && attendancePercentage > 0.9) {
-      return "Молодець!";
-    } else if (averageGrade > 90 || attendancePercentage > 0.9) {
-      return "Добре, але можна краще";
-    } else {
-      return "Редиска!";
+  
+    calculatePrice() {
+      let price = this.size.price + this.stuffing.price;
+      for (let topping of this.toppings) {
+        price += topping.price;
+      }
+      return price;
     }
-  };
-}
+  
+    calculateCalories() {
+      let calories = this.size.calories + this.stuffing.calories;
+      for (let topping of this.toppings) {
+        calories += topping.calories;
+      }
+      return calories;
+    }
+  }
 
-
-const student1 = new Student("Іван", "Іванов", 1998, [80, 90, 95]);
-const student2 = new Student("Марія", "Петренко", 2000, [95, 95, 95, 95]);
-
-
-student1.present();
-student1.present();
-student1.absent();
-console.log(student1.attendance); 
-console.log(student1.getAge()); 
-console.log(student1.getAverageGrade()); 
-console.log(student1.summary()); 
-
-student2.present();
-student2.present();
-student2.present();
-console.log(student2.attendance); 
-console.log(student2.getAge()); 
-console.log(student2.getAverageGrade());
-console.log(student2.summary()); 
-const studentForm = document.getElementById("student-form");
-const studentList = document.getElementById("student-list");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-studentForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const firstName = document.getElementById("first-name").value;
-  const lastName = document.getElementById("last-name").value;
-  const birthYear = document.getElementById("birth-year").value;
-  const grades = document.getElementById("grades").value;
-
-  const studentItem = document.createElement("li");
-  studentItem.innerHTML = `${firstName} ${lastName} (${birthYear}): ${grades}`;
-  studentList.appendChild(studentItem);
-
-  studentForm.reset();
-});
-*/
+  class Hamburger {
+    constructor(size, stuffing) {
+      this.size = size;
+      this.stuffing = stuffing;
+      this.toppings = [];
+    }
+  
+    addTopping(topping) {
+      this.toppings.push(topping);
+    }
+  
+    calculatePrice() {
+      let price = 0;
+      switch (this.size) {
+        case 'small':
+          price += 50;
+          break;
+        case 'large':
+          price += 100;
+          break;
+        default:
+          console.log('Invalid size');
+          return 0;
+      }
+  
+      switch (this.stuffing) {
+        case 'cheese':
+          price += 10;
+          break;
+        case 'salad':
+          price += 20;
+          break;
+        case 'potato':
+          price += 15;
+          break;
+        default:
+          console.log('Invalid stuffing');
+          return 0;
+      }
+  
+      this.toppings.forEach(function(topping) {
+        switch (topping) {
+          case 'spice':
+            price += 15;
+            break;
+          case 'mayo':
+            price += 20;
+            break;
+          default:
+            console.log(`Invalid topping: ${topping}`);
+        }
+      });
+  
+      return price;
+    }
+  
+    calculateCalories() {
+      let calories = 0;
+      switch (this.size) {
+        case 'small':
+          calories += 20;
+          break;
+        case 'large':
+          calories += 40;
+          break;
+        default:
+          console.log('Invalid size');
+          return 0;
+      }
+  
+      switch (this.stuffing) {
+        case 'cheese':
+          calories += 20;
+          break;
+        case 'salad':
+          calories += 5;
+          break;
+        case 'potato':
+          calories += 10;
+          break;
+        default:
+          console.log('Invalid stuffing');
+          return 0;
+      }
+  
+      this.toppings.forEach(function(topping) {
+        switch (topping) {
+          case 'spice':
+            break;
+          case 'mayo':
+            calories += 5;
+            break;
+          default:
+            console.log(`Invalid topping: ${topping}`);
+        }
+      });
+  
+      return calories;
+    }
+  }
+  
+  // Створюємо гамбургер з великим розміром та начинкою сир
+  const hamburger = new Hamburger('large', 'cheese');
+  
+  // Додаємо до гамбургера додаткову начинку та приправу
+  hamburger.addTopping('salad');
+  hamburger.addTopping('spice');
+  
+  // Виводимо вартість та калорійність гамбургера у консоль
+  console.log(`Price: ${hamburger.calculatePrice()} tg`);
+  console.log(`Calories: ${hamburger.calculateCalories()} cal`);
