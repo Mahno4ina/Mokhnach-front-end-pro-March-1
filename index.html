@@ -8,7 +8,25 @@
 </head>
 
 <body>
-  <div id="results-container"></div>
+  <body>
+    <div class="categories">
+        <h2>Категорії</h2>
+        <ul>
+            <li><a href="#" onclick="showProducts('category1')">Категорія 1</a></li>
+            <li><a href="#" onclick="showProducts('category2')">Категорія 2</a></li>
+            <li><a href="#" onclick="showProducts('category3')">Категорія 3</a></li>
+        </ul>
+    </div>
+    
+    <div class="products">
+        <h2>Товари</h2>
+        <ul id="productList"></ul>
+    </div>
+    
+    <div class="product-info">
+        <h2>Інформація про товар</h2>
+        <div id="productInfo"></div>
+    </div>
   <script src="second.js"></script>
 </body>
 
