@@ -8,25 +8,15 @@
 </head>
 
 <body>
-  <body>
-    <div class="categories">
-        <h2>Категорії</h2>
-        <ul>
-            <li><a href="#" onclick="showProducts('category1')">Категорія 1</a></li>
-            <li><a href="#" onclick="showProducts('category2')">Категорія 2</a></li>
-            <li><a href="#" onclick="showProducts('category3')">Категорія 3</a></li>
-        </ul>
+  <div class="slider-container">
+    <img class="slider-image active" src="bal.jpg" alt="Image 1">
+    <img class="slider-image" src="qds.jpg" alt="Image 2">
+    <img class="slider-image" src="sad.jpg" alt="Image 3">
+    <div class="slider-nav">
+      <button class="slider-button prev" id="prevButton" disabled>Prev</button>
+      <button class="slider-button next" id="nextButton">Next</button>
     </div>
-    
-    <div class="products">
-        <h2>Товари</h2>
-        <ul id="productList"></ul>
-    </div>
-    
-    <div class="product-info">
-        <h2>Інформація про товар</h2>
-        <div id="productInfo"></div>
-    </div>
+  </div>
   <script src="second.js"></script>
 </body>
 
